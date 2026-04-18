@@ -17,4 +17,9 @@
         id,strategy_id,strategy_desc,
         rule_models,create_time,update_time
     </sql>
+    <select id="queryStrategyByStrategyId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select strategy_id,strategy_desc,rule_models
+        from strategy
+        where strategy_id = #{strategyId}
+    </select>
 </mapper>
