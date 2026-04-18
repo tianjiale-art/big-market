@@ -2,6 +2,8 @@ package cn.tianjiale.domain.strategy.repository;
 
 
 import cn.tianjiale.domain.strategy.model.entity.StrategyAwardEntity;
+import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
+import cn.tianjiale.domain.strategy.model.entity.StrategyRuleEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -12,8 +14,13 @@ import java.util.Map;
 public interface IStrategyRepository {
     List<StrategyAwardEntity> queryStrategyAwardList(Long strategyId);
 
-    void storeStrategyAwardSearchRateTable(Long strategyId, int rateRange, Map<Integer, Integer> awardMap);
-    Integer getStrategyAwardAssemble(Long strategyId, Integer rateKey);
+    void storeStrategyAwardSearchRateTable(String key, int rateRange, Map<Integer, Integer> awardMap);
+    Integer getStrategyAwardAssemble(String key, Integer rateKey);
 
+    int getRateRange(String key);
     int getRateRange(Long strategyId);
+
+    StrategyEntity queryStrategyEntityByStrategyId(Long strategyId);
+
+    StrategyRuleEntity queryStrategyRule(Long strategyId, String ruleWeight);
 }
