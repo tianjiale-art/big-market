@@ -1,10 +1,8 @@
 package cn.tianjiale.domain.strategy.service.raffle;
 
-import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
-import cn.tianjiale.domain.strategy.model.entity.RaffleAwardEntity;
-import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
-import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
+import cn.tianjiale.domain.strategy.model.entity.*;
 import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.IRaffleStrategy;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
@@ -58,10 +56,21 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
 
         //5默认抽奖策略
         Integer awardId = dispatch.getRandomAwardId(strategyId);
+        //
+        StrategyAwardRuleModelVO strategyAwardRuleModelVO = repository.queryStrategyAwardRuleModelVO(strategyId,awardId);
+        raffleFactorEntity.setAwardId(awardId);
+        RaffleActionEntity<RaffleActionEntity.RaffleCenterEntity> raffleActionEntity1 = doCheckRaffleCenterLogic(raffleFactorEntity,strategyAwardRuleModelVO.raffleCenterRuleModelList());
+        if (RuleLogicCheckTypeVO.TAKE_OVER.getCode().equals(raffleActionEntity1.getCode())){
+            return RaffleAwardEntity.builder()
+                    .awardDesc("幸运奖品")
+                    .build();
+        }
+
         return RaffleAwardEntity.builder()
                 .awardId(awardId)
                 .build();
 
     }
     protected abstract RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics);
+    protected abstract RaffleActionEntity<RaffleActionEntity.RaffleCenterEntity> doCheckRaffleCenterLogic(RaffleFactorEntity raffleFactorEntity,String... logic);
 }

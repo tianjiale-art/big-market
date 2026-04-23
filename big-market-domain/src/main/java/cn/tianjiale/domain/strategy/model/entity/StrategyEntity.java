@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 @Builder
 @Data
@@ -24,10 +25,15 @@ public class StrategyEntity {
     private String ruleModels;
 
     public String[] ruleModel(){
+        if (StringUtils.isBlank(ruleModels))
+            return null;
         return ruleModels.split(Constants.SPLIT);
     }
     public String getRuleWeight(){
         String[] RuleModels = this.ruleModel();
+        if (RuleModels == null){
+            return null;
+        }
         for (String ruleModel : RuleModels) {
             if (ruleModel.equals("rule_weight")){
                 return ruleModel;

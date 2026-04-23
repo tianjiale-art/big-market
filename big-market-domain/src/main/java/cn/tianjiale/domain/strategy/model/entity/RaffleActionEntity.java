@@ -36,7 +36,14 @@ public class RaffleActionEntity<T extends RaffleActionEntity.RaffleEntity> {
         private Integer awardId;
     }
 
+    @EqualsAndHashCode(callSuper = true)
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
     static public class RaffleCenterEntity extends RaffleEntity{
+        private Long strategyId;
+        private Integer awardId;
 
     }
     static public class RaffleAfterEntity extends RaffleEntity{
