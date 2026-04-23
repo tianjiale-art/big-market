@@ -32,4 +32,5 @@ public abstract class AbstractLogicLink<T,D,R> implements ILogicLink<T,D,R>{
               return   next.apply(requestParameter,dynamicContext);
 
         }
+        protected abstract String ruleModel();
 }

@@ -4,7 +4,10 @@ import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
 import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.tianjiale.domain.strategy.model.entity.RuleMatterEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
+import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.ILogicFilter;
+import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -26,8 +29,12 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
 
     @Resource
     private DefaultLogicFactory logicFactory;
-    @Override
-    protected RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
+
+    public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch dispatch, DefaultChainFactory defaultChainFactory) {
+        super(repository, dispatch, defaultChainFactory);
+    }
+
+    /*protected RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
         if (logics == null||logics.length == 0 ){
             return RaffleActionEntity.<RaffleActionEntity.RaffleBeforeEntity>builder()
                     .code(RuleLogicCheckTypeVO.ALLOW.getCode())
@@ -74,11 +81,11 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
         }
         return raffleActionEntity;
 
-    }
+    }*/
 
     @Override
     protected RaffleActionEntity<RaffleActionEntity.RaffleCenterEntity> doCheckRaffleCenterLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
-        if (logics.length == 0 || logics == null){
+        if (logics == null||logics.length == 0 ){
             return RaffleActionEntity.<RaffleActionEntity.RaffleCenterEntity>builder()
                     .code(RuleLogicCheckTypeVO.ALLOW.getCode())
                     .info(RuleLogicCheckTypeVO.ALLOW.getInfo())

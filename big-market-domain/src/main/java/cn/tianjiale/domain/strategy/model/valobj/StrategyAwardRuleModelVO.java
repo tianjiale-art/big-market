@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class StrategyAwardRuleModelVO {
     private String ruleModels;
 
     public String[] raffleCenterRuleModelList(){
+        if (StringUtils.isBlank(ruleModels)) return null;
         ArrayList<Object> ruleModelList = new ArrayList<>();
         String[] stringRuleModels = this.ruleModels.split(Constants.SPLIT);
         for (String stringRuleModel : stringRuleModels) {
@@ -28,6 +30,7 @@ public class StrategyAwardRuleModelVO {
 return ruleModelList.toArray(new String[0]);
     }
     public String[] raffleAfterRuleModelList(){
+        if (StringUtils.isBlank(ruleModels)) return null;
         ArrayList<Object> ruleModelList = new ArrayList<>();
         String[] stringRuleModels = this.ruleModels.split(Constants.SPLIT);
         for (String stringRuleModel : stringRuleModels) {

@@ -59,14 +59,14 @@ public class StrategyAwardTest {
 
         // 通过反射 mock 规则中的值
         ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
-        ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 0l);
+        ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 7l);
     }
 
     @Test
-    public void test_performRaffle() {
+    public void test_performRaffle() throws Exception {
         RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()
-                .userId("tianjiale")
-                .strategyId(100003L)
+                .userId("user003")
+                .strategyId(100001L)
                 .build();
         RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(raffleFactorEntity);
         log.info("请求参数：{}", JSON.toJSONString(raffleFactorEntity));

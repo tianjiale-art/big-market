@@ -10,5 +10,5 @@ public interface IRaffleStrategy {
      * @param raffleFactorEntity
      * @return
      */
-    public RaffleAwardEntity performRaffle(RaffleFactorEntity raffleFactorEntity);
+    public RaffleAwardEntity performRaffle(RaffleFactorEntity raffleFactorEntity) throws Exception;
 }
