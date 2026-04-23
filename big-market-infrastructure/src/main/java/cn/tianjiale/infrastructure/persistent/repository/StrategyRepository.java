@@ -3,6 +3,7 @@ package cn.tianjiale.infrastructure.persistent.repository;
 import cn.tianjiale.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.infrastructure.persistent.dao.IStrategyAwardDao;
 import cn.tianjiale.infrastructure.persistent.dao.IStrategyDao;
@@ -132,5 +133,14 @@ public class StrategyRepository implements IStrategyRepository {
         strategyRule.setStrategyId(strategyId);
         strategyRule.setRuleModel(ruleModel);
        return strategyRuleDao.queryStrategyRuleValue(strategyRule);
+    }
+
+    @Override
+    public StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+       String ruleModel = strategyAwardDao.queryStrategyAwardRuleModel(strategyAward);
+        return new StrategyAwardRuleModelVO(ruleModel);
     }
 }

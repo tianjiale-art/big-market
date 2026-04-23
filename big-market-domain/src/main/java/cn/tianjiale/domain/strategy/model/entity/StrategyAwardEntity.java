@@ -1,6 +1,7 @@
 package cn.tianjiale.domain.strategy.model.entity;
 
 
+import cn.tianjiale.types.common.Constants;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -36,4 +37,7 @@ public class StrategyAwardEntity {
      * 奖品中奖概率
      */
     private BigDecimal awardRate;
+    /**
+     * 规则模型，rule配置的模型同步到此表，便于使用
+     */
 }

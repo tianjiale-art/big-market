@@ -1,109 +1,113 @@
-26-04-22.17:06:29.165 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 22616 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:06:29.166 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:06:30.191 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:06:30.195 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:06:30.233 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
-26-04-22.17:06:31.038 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:06:31.419 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:06:31.665 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:06:34.287 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:06:34.369 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.686 seconds (JVM running for 6.686)
-26-04-22.17:06:34.874 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:xiaofuge
-26-04-22.17:06:34.942 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:xiaofuge,ruleModel:rule_blacklist
-26-04-22.17:06:34.966 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:06:35.304 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:06:35.384 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:06:35.389 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-26-04-22.17:08:27.750 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 2020 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:08:27.750 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:08:28.575 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:08:28.577 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:08:28.603 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
-26-04-22.17:08:29.387 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:08:29.778 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:08:30.014 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:08:32.900 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:08:32.978 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.671 seconds (JVM running for 6.639)
-26-04-22.17:08:33.517 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:xiaofuge
-26-04-22.17:08:33.589 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:xiaofuge,ruleModel:rule_blacklist
-26-04-22.17:08:33.617 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:08:33.842 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:08:33.876 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:xiaofuge,ruleModel:rule_weight
-26-04-22.17:08:34.226 [main            ] INFO  StrategyAwardTest      - 请求参数：{"strategyId":100001,"userId":"xiaofuge"}
-26-04-22.17:08:34.229 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":101}
-26-04-22.17:08:34.246 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:08:34.257 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-26-04-22.17:13:45.344 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 5100 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:13:45.345 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:13:46.178 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:13:46.180 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:13:46.218 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
-26-04-22.17:13:46.937 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:13:47.304 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:13:47.614 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:13:50.554 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:13:50.643 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.761 seconds (JVM running for 6.649)
-26-04-22.17:13:51.086 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:user001
-26-04-22.17:13:51.152 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:user001,ruleModel:rule_blacklist
-26-04-22.17:13:51.172 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:13:51.374 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:13:51.500 [main            ] INFO  StrategyAwardTest      - 请求参数：{"strategyId":100001,"userId":"user001"}
-26-04-22.17:13:51.505 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":101}
-26-04-22.17:13:51.529 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:13:51.538 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-26-04-22.17:16:23.682 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 23340 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:16:23.683 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:16:24.548 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:16:24.551 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:16:24.581 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-26-04-22.17:16:25.393 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:16:25.784 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:16:26.029 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:16:29.648 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:16:29.756 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 6.586 seconds (JVM running for 8.118)
-26-04-22.17:16:30.381 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:tianjaile
-26-04-22.17:16:30.491 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:tianjaile,ruleModel:rule_blacklist
-26-04-22.17:16:30.553 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:16:30.785 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:18:18.295 [HikariPool-1 housekeeper] WARN  HikariPool             - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59s162ms949µs200ns).
-26-04-22.17:18:18.298 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:tianjaile,ruleModel:rule_weight
-26-04-22.17:18:18.369 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:18:18.389 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-26-04-22.17:18:55.276 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 23464 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:18:55.277 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:18:56.071 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:18:56.074 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:18:56.099 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 12 ms. Found 0 Redis repository interfaces.
-26-04-22.17:18:56.899 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:18:57.311 [redisson-netty-2-5] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:18:57.547 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:19:00.556 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:19:00.639 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.841 seconds (JVM running for 6.696)
-26-04-22.17:19:01.140 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:tianjaile
-26-04-22.17:19:01.217 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:tianjaile,ruleModel:rule_blacklist
-26-04-22.17:19:01.241 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:19:01.474 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:19:01.504 [main            ] INFO  RuleWeightLogicFilter  - 规则过滤-权重范围；userId:tianjaile,strategyId:100001,ruleModel:rule_weight
-26-04-22.17:19:01.794 [main            ] INFO  StrategyAwardTest      - 请求参数：{"strategyId":100001,"userId":"tianjaile"}
-26-04-22.17:19:01.797 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":105}
-26-04-22.17:19:01.814 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:19:01.831 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
-26-04-22.17:19:34.077 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 21716 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
-26-04-22.17:19:34.078 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
-26-04-22.17:19:34.844 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
-26-04-22.17:19:34.848 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
-26-04-22.17:19:34.880 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
-26-04-22.17:19:35.602 [main            ] INFO  Version                - Redisson 3.23.4
-26-04-22.17:19:35.930 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:19:36.168 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
-26-04-22.17:19:39.026 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
-26-04-22.17:19:39.122 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.416 seconds (JVM running for 6.28)
-26-04-22.17:19:39.637 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100001,userId:tianjaile
-26-04-22.17:19:39.712 [main            ] INFO  RuleBlackListLogicFilter - 规则过滤-黑名单strategyId:100001,userId:tianjaile,ruleModel:rule_blacklist
-26-04-22.17:19:39.740 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
-26-04-22.17:19:39.974 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
-26-04-22.17:19:40.001 [main            ] INFO  RuleWeightLogicFilter  - 规则过滤-权重范围；userId:tianjaile,strategyId:100001,ruleModel:rule_weight
-26-04-22.17:19:40.252 [main            ] INFO  StrategyAwardTest      - 请求参数：{"strategyId":100001,"userId":"tianjaile"}
-26-04-22.17:19:40.255 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":103}
-26-04-22.17:19:40.270 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
-26-04-22.17:19:40.281 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:48:15.643 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 21576 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:48:15.644 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:48:16.676 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:48:16.681 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:48:16.713 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 Redis repository interfaces.
+26-04-23.09:48:17.648 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:48:18.070 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:48:18.306 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:48:21.004 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:48:21.101 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.972 seconds (JVM running for 7.123)
+26-04-23.09:48:22.056 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:48:22.459 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:48:22.746 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:48:22.910 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:48:23.062 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:48:23.107 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:48:23.137 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:49:57.722 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 21560 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:49:57.723 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:49:58.725 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:49:58.729 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:49:58.765 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16 ms. Found 0 Redis repository interfaces.
+26-04-23.09:49:59.615 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:50:00.011 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:50:00.273 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:50:03.061 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:50:03.152 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.922 seconds (JVM running for 6.848)
+26-04-23.09:50:04.167 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:50:04.449 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:50:04.713 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:50:04.822 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:50:04.931 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:50:04.939 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100003,userId:tianjiale
+26-04-23.09:50:05.010 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:50:05.029 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:51:45.053 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 8132 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:51:45.054 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:51:46.089 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:51:46.095 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:51:46.144 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.
+26-04-23.09:51:47.060 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:51:47.440 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:51:47.679 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:51:50.510 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:51:50.595 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 6.046 seconds (JVM running for 7.033)
+26-04-23.09:51:51.607 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:51:51.895 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:51:52.207 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:51:52.331 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:51:52.433 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:51:52.436 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100003,userId:tianjiale
+26-04-23.09:51:52.478 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:51:52.490 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:52:24.533 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 22100 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:52:24.534 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:52:25.472 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:52:25.476 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:52:25.515 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 17 ms. Found 0 Redis repository interfaces.
+26-04-23.09:52:26.368 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:52:26.737 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:52:26.963 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:52:29.711 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:52:29.795 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.737 seconds (JVM running for 6.736)
+26-04-23.09:52:30.724 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:52:31.021 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:52:31.294 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:52:31.401 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:52:31.503 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:52:31.507 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100003,userId:tianjiale
+26-04-23.09:52:31.624 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:52:31.635 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:54:50.148 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 7804 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:54:50.150 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:54:51.188 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:54:51.190 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:54:51.229 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 0 Redis repository interfaces.
+26-04-23.09:54:52.023 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:54:52.419 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:54:52.668 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:54:55.246 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:54:55.318 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.643 seconds (JVM running for 6.65)
+26-04-23.09:54:56.249 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:54:56.546 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:54:56.845 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:54:56.956 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:54:57.068 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:54:57.075 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100003,userId:tianjiale
+26-04-23.09:54:57.158 [main            ] INFO  RuleLockLogicFilter    - 抽奖中规则——奖品抽奖次数解锁strategyId:100003,userId:tianjiale,awardId:108,ruleModel:rule_lock
+26-04-23.09:54:57.322 [main            ] INFO  StrategyAwardTest      - 请求参数：{"awardId":108,"strategyId":100003,"userId":"tianjiale"}
+26-04-23.09:54:57.325 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":108}
+26-04-23.09:54:57.335 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:54:57.346 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
+26-04-23.09:56:21.737 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 21772 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-04-23.09:56:21.738 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-04-23.09:56:22.668 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-04-23.09:56:22.672 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-04-23.09:56:22.707 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 18 ms. Found 0 Redis repository interfaces.
+26-04-23.09:56:23.524 [main            ] INFO  Version                - Redisson 3.23.4
+26-04-23.09:56:23.880 [redisson-netty-2-6] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:56:24.103 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-04-23.09:56:27.057 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-04-23.09:56:27.148 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 5.911 seconds (JVM running for 6.904)
+26-04-23.09:56:28.177 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-04-23.09:56:28.453 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-04-23.09:56:28.773 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:56:28.873 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:56:28.977 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-04-23.09:56:28.982 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100003,userId:tianjiale
+26-04-23.09:56:29.094 [main            ] INFO  RuleLockLogicFilter    - 抽奖中规则——奖品抽奖次数解锁strategyId:100003,userId:tianjiale,awardId:107,ruleModel:rule_lock
+26-04-23.09:56:29.247 [main            ] INFO  StrategyAwardTest      - 请求参数：{"awardId":107,"strategyId":100003,"userId":"tianjiale"}
+26-04-23.09:56:29.250 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardDesc":"幸运奖品"}
+26-04-23.09:56:29.260 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-04-23.09:56:29.270 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
