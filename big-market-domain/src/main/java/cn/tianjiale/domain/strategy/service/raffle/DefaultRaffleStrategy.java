@@ -9,6 +9,7 @@ import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.ILogicFilter;
 import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
+import cn.tianjiale.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,8 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
 
     @Resource
     private DefaultLogicFactory logicFactory;
+    @Resource
+    private DefaultTreeFactory defaultTreeFactory;
 
     public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch dispatch, DefaultChainFactory defaultChainFactory) {
         super(repository, dispatch, defaultChainFactory);
