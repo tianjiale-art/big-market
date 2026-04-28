@@ -4,6 +4,7 @@ import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.rule.chain.AbstractLogicLink;
+import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
 import cn.tianjiale.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -14,11 +15,11 @@ import javax.annotation.Resource;
 
 @Slf4j
 @Component("rule_blacklist")
-public class BlackListLogicChain extends AbstractLogicLink<String ,Long,Integer> {
+public class BlackListLogicChain extends AbstractLogicLink<String ,Long,DefaultChainFactory.StrategyAwardVO> {
     @Resource
     private IStrategyRepository repository;
     @Override
-    public Integer apply(String userId, Long strategyId) throws Exception {
+    public DefaultChainFactory.StrategyAwardVO apply(String userId, Long strategyId) throws Exception {
         log.info("抽奖责任链——黑名单开始userId:{},strategyId:{},ruleModel:{}",userId,strategyId,ruleModel());
         //查询规则值配置
         //1.根据strategy + ruleModel + wardId查询ruleValue
@@ -32,7 +33,10 @@ public class BlackListLogicChain extends AbstractLogicLink<String ,Long,Integer>
         for (String blackName : blackList) {
             if (blackName.equals(userId)){
         log.info("抽奖责任链——黑名单接管userId:{},strategyId:{},ruleModel:{},awardId:{}",userId,strategyId,ruleModel(),awardId);
-                return awardId;
+                return DefaultChainFactory.StrategyAwardVO.builder()
+                        .logicModel(ruleModel())
+                        .awardId(awardId)
+                        .build();
             }
         }
         log.info("抽奖责任链——黑名单放行userId:{},strategyId:{},ruleModel:{}",userId,strategyId,ruleModel());
@@ -41,6 +45,6 @@ public class BlackListLogicChain extends AbstractLogicLink<String ,Long,Integer>
 
     @Override
     protected String ruleModel() {
-        return "rule_blacklist";
+        return DefaultChainFactory.logicModel.RULE_BLACKLIST.getCode();
     }
 }

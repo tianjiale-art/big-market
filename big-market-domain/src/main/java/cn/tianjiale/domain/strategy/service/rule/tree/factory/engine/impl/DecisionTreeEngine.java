@@ -24,7 +24,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
     }
 
     @Override
-    public DefaultTreeFactory.StrategyAwardData process(String userId, Long strategyId, Integer awardId) {
+    public DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId) {
         //1.获取根节点key
         String treeRootRuleNode = ruleTreeVO.getTreeRootRuleNode();
 
@@ -37,7 +37,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
 
 
         //4.从起始节点开始执行
-        DefaultTreeFactory.StrategyAwardData  strategyAwardData = null;
+        DefaultTreeFactory.StrategyAwardVO  strategyAwardData = null;
         while (ruleTreeNodeVO != null){
             //4.1 获取决策节点——>真正用来处理业务的
             String ruleKey = ruleTreeNodeVO.getRuleKey();
@@ -45,7 +45,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
             DefaultTreeFactory.TreeActionEntity logic = logicTreeNode.logic(userId, strategyId, awardId);
 
             //4.2 赋值结果
-            strategyAwardData = logic.getStrategyAwardData();
+            strategyAwardData = logic.getStrategyAwardVO();
 
             //4.3 找到连线ruleNodeTreeLineVO
             List<RuleTreeNodeLineVO> treeNodeLineVOList = ruleTreeNodeVO.getTreeNodeLineVOList();
@@ -53,7 +53,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
             log.info("决策树引擎:{},treeNode:{},code:{}",ruleTreeVO.getTreeName(),ruleTreeNodeVO.getTreeId(),ruleLogicCheckTypeVO.getCode());
 
             //4.4 获取下一个决策节点
-           String nextNode = nextNode(ruleLogicCheckTypeVO.getCode(),treeNodeLineVOList);
+           String nextNode = nextNode(ruleLogicCheckTypeVO.getCode(),ruleTreeNodeVO.getTreeNodeLineVOList());
            ruleTreeNodeVO = treeNodeMap.get(nextNode);
 
         }

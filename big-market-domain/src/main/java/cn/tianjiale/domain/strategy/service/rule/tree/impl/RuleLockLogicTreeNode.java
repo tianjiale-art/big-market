@@ -22,8 +22,9 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
     private IStrategyRepository repository;
     @Override
     public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId) {
-        //2.查询规则 ruleValue
-        String ruleValue = repository.queryStrategyRuleValue(strategyId, awardId,"rule_lock");
+        /*//2.查询规则 ruleValue
+        //todo
+        String ruleValue = repository.queryStrategyRuleValue(strategyId, awardId,"tree_lock");
         if (StringUtils.isBlank(ruleValue)){
             throw new IllegalArgumentException("valid input format");
         }
@@ -33,12 +34,12 @@ public class RuleLockLogicTreeNode implements ILogicTreeNode {
         if (userRaffleCount >= awardLockCount){
             return DefaultTreeFactory.TreeActionEntity.builder()
                     .ruleLogicCheckTypeVO(RuleLogicCheckTypeVO.ALLOW)
-                    .strategyAwardData(DefaultTreeFactory.StrategyAwardData.builder()
+                    .strategyAwardVO(DefaultTreeFactory.StrategyAwardVO.builder()
                             .awardId(awardId)
                             .awardRuleValue(ruleValue)
                             .build())
                     .build();
-        }
+        }*/
         return DefaultTreeFactory.TreeActionEntity.builder()
                 .ruleLogicCheckTypeVO(RuleLogicCheckTypeVO.TAKE_OVER)
                 .build();

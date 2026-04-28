@@ -4,12 +4,16 @@ import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
 import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.tianjiale.domain.strategy.model.entity.RuleMatterEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.ILogicFilter;
+import cn.tianjiale.domain.strategy.service.rule.chain.ILogicLink;
 import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
+import cn.tianjiale.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -28,13 +32,32 @@ import java.util.stream.Collectors;
 @Slf4j
 public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
 
-    @Resource
-    private DefaultLogicFactory logicFactory;
-    @Resource
-    private DefaultTreeFactory defaultTreeFactory;
 
-    public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch dispatch, DefaultChainFactory defaultChainFactory) {
-        super(repository, dispatch, defaultChainFactory);
+
+    public DefaultRaffleStrategy(IStrategyRepository repository, IStrategyDispatch dispatch, DefaultChainFactory defaultChainFactory,DefaultTreeFactory defaultTreeFactory) {
+        super(repository, dispatch, defaultChainFactory,defaultTreeFactory);
+    }
+
+    @Override
+    protected DefaultChainFactory.StrategyAwardVO raffleLogicChain(String userId, Long strategyId) throws Exception {
+        ILogicLink<String, Long, DefaultChainFactory.StrategyAwardVO> logicLink = defaultChainFactory.openLogicChain(strategyId);
+         DefaultChainFactory.StrategyAwardVO strategyAwardVO = logicLink.apply(userId, strategyId);
+         return strategyAwardVO;
+    }
+
+    @Override
+    protected DefaultTreeFactory.StrategyAwardVO raffleLogicTree(String userId, Long strategyId, Integer awardId) {
+        StrategyAwardRuleModelVO strategyAwardRuleModelVO = repository.queryStrategyAwardRuleModelVO(strategyId, awardId);
+        if (strategyAwardRuleModelVO == null){
+        return DefaultTreeFactory.StrategyAwardVO.builder().awardId(awardId).build();
+        }
+        RuleTreeVO ruleTreeVO = repository.queryRuleTreeVOByTreeId(strategyAwardRuleModelVO.getRuleModels());
+        if (null == ruleTreeVO){
+            throw new RuntimeException("存在抽奖策略配置的规则模型 Key，未在库表 rule_tree、rule_tree_node、rule_tree_line 配置对应的规则树信息 " + strategyAwardRuleModelVO.getRuleModels());
+        }
+        IDecisionTreeEngine treeEngine = defaultTreeFactory.openLogicTree(ruleTreeVO);
+        return treeEngine.process(userId, strategyId, awardId);
+
     }
 
     /*protected RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
@@ -86,8 +109,8 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
 
     }*/
 
-    @Override
-    protected RaffleActionEntity<RaffleActionEntity.RaffleCenterEntity> doCheckRaffleCenterLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
+
+    /*protected RaffleActionEntity<RaffleActionEntity.RaffleCenterEntity> doCheckRaffleCenterLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {
         if (logics == null||logics.length == 0 ){
             return RaffleActionEntity.<RaffleActionEntity.RaffleCenterEntity>builder()
                     .code(RuleLogicCheckTypeVO.ALLOW.getCode())
@@ -113,7 +136,7 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
         }
         return raffleActionEntity;
 
-    }
+    }*/
 
 
 }

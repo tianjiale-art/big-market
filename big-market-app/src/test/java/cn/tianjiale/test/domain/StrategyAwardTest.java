@@ -6,6 +6,7 @@ import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.tianjiale.domain.strategy.service.IRaffleStrategy;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyArmory;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
+import cn.tianjiale.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
 import cn.tianjiale.domain.strategy.service.rule.impl.RuleLockLogicFilter;
 import cn.tianjiale.domain.strategy.service.rule.impl.RuleWeightLogicFilter;
 import com.alibaba.fastjson.JSON;
@@ -25,14 +26,12 @@ import javax.annotation.Resource;
 public class StrategyAwardTest {
     @Resource
     private IStrategyArmory strategyArmory;
-    @Resource
-    private IStrategyDispatch strategyDispatch;
+
     @Resource
     private IRaffleStrategy raffleStrategy;
     @Resource
-    private RuleWeightLogicFilter ruleWeightLogicFilter;
-    @Resource
-    private RuleLockLogicFilter ruleLockLogicFilter;
+    private RuleWeightLogicChain ruleWeightLogicChain;
+
 /*@Before
     public void test_strategyArmory(){
     boolean b = strategyArmory.assembleLotteryStrategy(100001l);
@@ -54,23 +53,24 @@ public class StrategyAwardTest {
     public void setUp() {
         // 策略装配 100001、100002、100003
         log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100001L));
-        log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100002L));
-        log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100003L));
+        log.info("测试结果：{}", strategyArmory.assembleLotteryStrategy(100006L));
 
         // 通过反射 mock 规则中的值
-        ReflectionTestUtils.setField(ruleWeightLogicFilter, "userScore", 40500L);
-        ReflectionTestUtils.setField(ruleLockLogicFilter, "userRaffleCount", 7l);
+        ReflectionTestUtils.setField(ruleWeightLogicChain, "userScore", 4900L);
     }
 
     @Test
     public void test_performRaffle() throws Exception {
         RaffleFactorEntity raffleFactorEntity = RaffleFactorEntity.builder()
-                .userId("user003")
-                .strategyId(100001L)
+                .userId("xiaofuge")
+                .strategyId(100006L)
                 .build();
+
         RaffleAwardEntity raffleAwardEntity = raffleStrategy.performRaffle(raffleFactorEntity);
+
         log.info("请求参数：{}", JSON.toJSONString(raffleFactorEntity));
         log.info("测试结果：{}", JSON.toJSONString(raffleAwardEntity));
     }
+
 
 }

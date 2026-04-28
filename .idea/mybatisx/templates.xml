@@ -68,8 +68,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="Award" />
-                  <option name="tableName" value="award" />
+                  <option name="className" value="RuleTreeNodeLine" />
+                  <option name="tableName" value="rule_tree_node_line" />
                 </TableUIInfo>
               </list>
             </option>

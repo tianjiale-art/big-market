@@ -4,6 +4,7 @@ package cn.tianjiale.domain.strategy.repository;
 import cn.tianjiale.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 
 import java.util.List;
@@ -29,4 +30,6 @@ public interface IStrategyRepository {
     String queryStrategyRuleValue(Long strategyId, String ruleModel);
 
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
+
+    RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
 }

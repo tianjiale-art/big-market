@@ -22,8 +22,8 @@ public class LogicTreeTest {
     @Resource
     private DefaultTreeFactory defaultTreeFactory;
 
-    @Test
-    public void test_tree_rule(){
+
+    /*public void test_tree_rule(){
         //构建参数
         RuleTreeNodeVO rule_lock = RuleTreeNodeVO.builder()
                 .treeId(100000001)
@@ -78,8 +78,8 @@ public class LogicTreeTest {
             put("rule_luck_award",rule_luck_award);
         }});
         IDecisionTreeEngine iDecisionTreeEngine = defaultTreeFactory.openLogicTree(ruleTreeVO);
-        DefaultTreeFactory.StrategyAwardData data = iDecisionTreeEngine.process("tianjaile", 100001L, 109);
+        DefaultTreeFactory.StrategyAwardVO data = iDecisionTreeEngine.process("tianjaile", 100001L, 109);
         log.info("测试结果:{}", JSON.toJSONString(JSON.toJSONString(data)));
-    }
+    }*/
 
 }

@@ -5,6 +5,7 @@ import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.chain.AbstractLogicLink;
+import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
 import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
 import cn.tianjiale.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +19,7 @@ import java.util.Map;
 
 @Slf4j
 @Component("rule_weight")
-public class RuleWeightLogicChain extends AbstractLogicLink<String,Long,Integer> {
+public class RuleWeightLogicChain extends AbstractLogicLink<String,Long,DefaultChainFactory.StrategyAwardVO> {
     @Resource
     private IStrategyRepository repository;
     @Resource
@@ -26,11 +27,11 @@ public class RuleWeightLogicChain extends AbstractLogicLink<String,Long,Integer>
     public Long userScore = 0L;
     @Override
     protected String ruleModel() {
-        return "rule_weight";
+        return DefaultChainFactory.logicModel.RULE_WEIGHT.getCode();
     }
 
     @Override
-    public Integer apply(String userId, Long strategyId) throws Exception {
+    public DefaultChainFactory.StrategyAwardVO apply(String userId, Long strategyId) throws Exception {
         log.info("抽奖责任链——权重开始userId:{},strategyId:{},ruleModel:{}",userId,strategyId,ruleModel());
         String ruleValue = repository.queryStrategyRuleValue(strategyId,ruleModel());
 
@@ -53,7 +54,10 @@ public class RuleWeightLogicChain extends AbstractLogicLink<String,Long,Integer>
                 Integer awardId = dispatch.getRandomAwardId(strategyId, analyticalValueGroups.get(valueKey));
 
                 log.info("抽奖责任链——权重接管userId:{},strategyId:{},ruleModel:{},awardId:{}",userId,strategyId,ruleModel(),awardId);
-                return awardId;
+                return DefaultChainFactory.StrategyAwardVO.builder()
+                        .awardId(awardId)
+                        .logicModel(ruleModel())
+                        .build();
             }
         }
         log.info("抽奖责任链——权重放行userId:{},strategyId:{},ruleModel:{}",userId,strategyId,ruleModel());
