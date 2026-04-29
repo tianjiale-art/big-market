@@ -8,6 +8,7 @@ import cn.tianjiale.domain.strategy.service.rule.tree.ILogicTreeNode;
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
 import java.util.Map;
@@ -26,36 +27,29 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
     @Override
     public DefaultTreeFactory.StrategyAwardVO process(String userId, Long strategyId, Integer awardId) {
         //1.获取根节点key
-        String treeRootRuleNode = ruleTreeVO.getTreeRootRuleNode();
+        String nextNode = ruleTreeVO.getTreeRootRuleNode();
 
         //2.获取规则树节点集合treeNodeMap
         Map<String, RuleTreeNodeVO> treeNodeMap = ruleTreeVO.getTreeNodeMap();
 
-        //3.根据根节点key获取起始节点ruleTreeNodeVO
-        RuleTreeNodeVO ruleTreeNodeVO = treeNodeMap.get(treeRootRuleNode);
-
-
-
-        //4.从起始节点开始执行
         DefaultTreeFactory.StrategyAwardVO  strategyAwardData = null;
-        while (ruleTreeNodeVO != null){
-            //4.1 获取决策节点——>真正用来处理业务的
-            String ruleKey = ruleTreeNodeVO.getRuleKey();
-            ILogicTreeNode logicTreeNode = logicTreeNodeMap.get(ruleKey);
+        //遍历核心以nextNode为循环条件
+        while (nextNode != null){
+            //获取当前节点
+            RuleTreeNodeVO ruleTreeNodeVO = treeNodeMap.get(nextNode);
+            //获取决策节点
+            ILogicTreeNode logicTreeNode = logicTreeNodeMap.get(ruleTreeNodeVO.getRuleKey());
             DefaultTreeFactory.TreeActionEntity logic = logicTreeNode.logic(userId, strategyId, awardId);
 
             //4.2 赋值结果
             strategyAwardData = logic.getStrategyAwardVO();
-
-            //4.3 找到连线ruleNodeTreeLineVO
-            List<RuleTreeNodeLineVO> treeNodeLineVOList = ruleTreeNodeVO.getTreeNodeLineVOList();
             RuleLogicCheckTypeVO ruleLogicCheckTypeVO = logic.getRuleLogicCheckTypeVO();
+
+
             log.info("决策树引擎:{},treeNode:{},code:{}",ruleTreeVO.getTreeName(),ruleTreeNodeVO.getTreeId(),ruleLogicCheckTypeVO.getCode());
 
-            //4.4 获取下一个决策节点
-           String nextNode = nextNode(ruleLogicCheckTypeVO.getCode(),ruleTreeNodeVO.getTreeNodeLineVOList());
-           ruleTreeNodeVO = treeNodeMap.get(nextNode);
-
+            //获取下一个节点
+            nextNode = nextNode(ruleLogicCheckTypeVO.getCode(),ruleTreeNodeVO.getTreeNodeLineVOList());
         }
         //4.返回结果
         return strategyAwardData;
