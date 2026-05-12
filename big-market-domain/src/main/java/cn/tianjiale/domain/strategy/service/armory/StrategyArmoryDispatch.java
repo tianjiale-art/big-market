@@ -4,7 +4,9 @@ package cn.tianjiale.domain.strategy.service.armory;
 import cn.tianjiale.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyRuleEntity;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
+import cn.tianjiale.types.common.Constants;
 import cn.tianjiale.types.enums.ResponseCode;
 import cn.tianjiale.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +28,13 @@ public class StrategyArmoryDispatch implements IStrategyArmory,IStrategyDispatch
         //1.调用仓储层进行查询数据
         List<StrategyAwardEntity> strategyAwardEntities = strategyRepository.queryStrategyAwardList(strategyId);
         assembleStrategy(String.valueOf(strategyId),strategyAwardEntities);
+
+        //1.1缓存奖品库存【用于decr扣减库存使用】
+        for (StrategyAwardEntity strategyAwardEntity : strategyAwardEntities) {
+            Integer awardId = strategyAwardEntity.getAwardId();
+            Integer awardCount = strategyAwardEntity.getAwardCount();
+            cacheStrategyAwardCount(strategyId,awardId,awardCount);
+        }
 
         //2.根据strategyId查询rulemodels
         StrategyEntity strategyEntity = strategyRepository.queryStrategyEntityByStrategyId(strategyId);
@@ -57,6 +66,11 @@ public class StrategyArmoryDispatch implements IStrategyArmory,IStrategyDispatch
         return true;
     }
 
+    private void cacheStrategyAwardCount(Long strategyId, Integer awardId, Integer awardCount) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        strategyRepository.cacheStrategyAwardCount(cacheKey,awardCount);
+    }
+
     @Override
     public Integer getRandomAwardId(Long strategyId) {
         //1.查询总的抽奖范围
@@ -73,6 +87,15 @@ public class StrategyArmoryDispatch implements IStrategyArmory,IStrategyDispatch
         //2.根据总的抽奖范围去生成随机数获取奖品ID
         return strategyRepository.getStrategyAwardAssemble(key,new SecureRandom().nextInt(rateRange));
     }
+
+    @Override
+    public Boolean subtractionAwardStock(Long strategyId, Integer awardId) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_COUNT_KEY + strategyId + Constants.UNDERLINE + awardId;
+        return strategyRepository.subtractionAwardStock(cacheKey);
+    }
+
+
+
 
     public void assembleStrategy(String key,List<StrategyAwardEntity> strategyAwardEntities){
         //2.获取最小概率值

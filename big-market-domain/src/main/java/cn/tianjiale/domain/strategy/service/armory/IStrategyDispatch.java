@@ -1,5 +1,7 @@
 package cn.tianjiale.domain.strategy.service.armory;
 
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
+
 public interface IStrategyDispatch {
     /**
      * 获取抽奖策略装配的随机结果
@@ -9,4 +11,8 @@ public interface IStrategyDispatch {
      */
     Integer getRandomAwardId(Long strategyId);
     Integer getRandomAwardId(Long strategyId,String ruleWeight);
+
+    Boolean subtractionAwardStock(Long strategyId,Integer awardId);
+
+
 }

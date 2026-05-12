@@ -17,29 +17,22 @@ import javax.annotation.Resource;
 @Slf4j
 @Component("rule_lock")
 public class RuleLockLogicTreeNode implements ILogicTreeNode {
-    public static  Long userRaffleCount = 3l;
-    @Resource
-    private IStrategyRepository repository;
-    @Override
-    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId) {
-        /*//2.查询规则 ruleValue
-        //todo
-        String ruleValue = repository.queryStrategyRuleValue(strategyId, awardId,"tree_lock");
-        if (StringUtils.isBlank(ruleValue)){
-            throw new IllegalArgumentException("valid input format");
-        }
-        int awardLockCount = Integer.parseInt(ruleValue);
+    public static  Long userRaffleCount = 10l;
 
-        //3.次数对比
-        if (userRaffleCount >= awardLockCount){
+    @Override
+    public DefaultTreeFactory.TreeActionEntity logic(String userId, Long strategyId, Integer awardId,String ruleValue) {
+        long raffleCount = 0L;
+        try {
+            raffleCount = Long.parseLong(ruleValue);
+        }catch (Exception e){
+            throw new RuntimeException("规则过滤-次数额异常 ruleValue" + ruleValue + "配置不正确");
+
+        }
+        if (userRaffleCount >= raffleCount){
             return DefaultTreeFactory.TreeActionEntity.builder()
                     .ruleLogicCheckTypeVO(RuleLogicCheckTypeVO.ALLOW)
-                    .strategyAwardVO(DefaultTreeFactory.StrategyAwardVO.builder()
-                            .awardId(awardId)
-                            .awardRuleValue(ruleValue)
-                            .build())
                     .build();
-        }*/
+        }
         return DefaultTreeFactory.TreeActionEntity.builder()
                 .ruleLogicCheckTypeVO(RuleLogicCheckTypeVO.TAKE_OVER)
                 .build();

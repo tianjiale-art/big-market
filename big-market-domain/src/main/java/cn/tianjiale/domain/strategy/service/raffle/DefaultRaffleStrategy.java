@@ -6,6 +6,7 @@ import cn.tianjiale.domain.strategy.model.entity.RuleMatterEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.ILogicFilter;
@@ -58,6 +59,16 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
         IDecisionTreeEngine treeEngine = defaultTreeFactory.openLogicTree(ruleTreeVO);
         return treeEngine.process(userId, strategyId, awardId);
 
+    }
+
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() throws InterruptedException {
+        return repository.takeQueueValue();
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+            repository.updateStrategyAwardStock(strategyId,awardId);
     }
 
     /*protected RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {

@@ -6,6 +6,7 @@ import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
 import cn.tianjiale.domain.strategy.model.entity.StrategyRuleEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
+import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 
 import java.util.List;
 import java.util.Map;
@@ -32,4 +33,15 @@ public interface IStrategyRepository {
     StrategyAwardRuleModelVO queryStrategyAwardRuleModelVO(Long strategyId, Integer awardId);
 
     RuleTreeVO queryRuleTreeVOByTreeId(String treeId);
+
+    void cacheStrategyAwardCount(String cacheKey, Integer awardCount);
+
+    Boolean subtractionAwardStock(String cacheKey);
+
+
+    void awardStockConsumeSendQueue(StrategyAwardStockKeyVO build);
+
+    StrategyAwardStockKeyVO takeQueueValue();
+
+    void updateStrategyAwardStock(Long strategyId, Integer awardId);
 }

@@ -5,6 +5,7 @@ import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
 import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
+import cn.tianjiale.domain.strategy.service.IRaffleStock;
 import cn.tianjiale.domain.strategy.service.IRaffleStrategy;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.chain.ILogicLink;
@@ -20,7 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import javax.annotation.Resource;
 
 @Slf4j
-public abstract class AbstractRaffleStrategy implements IRaffleStrategy {
+public abstract class AbstractRaffleStrategy implements IRaffleStrategy, IRaffleStock {
 
     protected IStrategyRepository repository;
 

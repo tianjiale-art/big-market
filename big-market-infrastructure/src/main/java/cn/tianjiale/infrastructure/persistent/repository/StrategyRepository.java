@@ -11,6 +11,8 @@ import cn.tianjiale.infrastructure.persistent.po.*;
 import cn.tianjiale.infrastructure.persistent.redis.IRedisService;
 import cn.tianjiale.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
+import org.redisson.api.RBlockingQueue;
+import org.redisson.api.RDelayedQueue;
 import org.redisson.api.RMap;
 import org.springframework.stereotype.Repository;
 
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 @Repository
 @Slf4j
@@ -205,5 +208,47 @@ public class StrategyRepository implements IStrategyRepository {
         //return ruleTreeVO
         return ruleTreeVO;
 
+    }
+
+    @Override
+    public void cacheStrategyAwardCount(String cacheKey, Integer awardCount) {
+      if (redisService.isExists(cacheKey)) return;
+       redisService.setAtomicLong(cacheKey,awardCount);
+    }
+
+    @Override
+    public Boolean subtractionAwardStock(String cacheKey) {
+        long surplus = redisService.decr(cacheKey);
+        if (surplus < 0){
+            redisService.setValue(cacheKey,0);
+        }
+        //兜底操作【给每个库存98，97加锁】
+       String key = cacheKey + Constants.COLON + surplus;
+        Boolean lock = redisService.setNx(key);
+        return lock;
+    }
+
+    @Override
+    public void awardStockConsumeSendQueue(StrategyAwardStockKeyVO build) {
+        String cacheKey = Constants.RedisKey.STRATEGY_AWARD_KEY;
+        RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+        RDelayedQueue<StrategyAwardStockKeyVO> delayedQueue = redisService.getDelayedQueue(blockingQueue);
+        delayedQueue.offer(build,3, TimeUnit.SECONDS);
+    }
+
+    @Override
+    public StrategyAwardStockKeyVO takeQueueValue() {
+    String cacheKey = Constants.RedisKey.STRATEGY_AWARD_KEY;
+        RBlockingQueue<StrategyAwardStockKeyVO> blockingQueue = redisService.getBlockingQueue(cacheKey);
+       return blockingQueue.poll();
+
+    }
+
+    @Override
+    public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
+        StrategyAward strategyAward = new StrategyAward();
+        strategyAward.setStrategyId(strategyId);
+        strategyAward.setAwardId(awardId);
+        strategyAwardDao.updateStrategyAwardStock(strategyAward);
     }
 }
