@@ -5,10 +5,9 @@ import cn.tianjiale.domain.strategy.model.entity.RaffleAwardEntity;
 import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
 import cn.tianjiale.domain.strategy.service.IRaffleStrategy;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyArmory;
-import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
+
 import cn.tianjiale.domain.strategy.service.rule.chain.impl.RuleWeightLogicChain;
-import cn.tianjiale.domain.strategy.service.rule.impl.RuleLockLogicFilter;
-import cn.tianjiale.domain.strategy.service.rule.impl.RuleWeightLogicFilter;
+
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Before;
@@ -16,7 +15,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.util.ReflectionTestUtils;
+
 
 import javax.annotation.Resource;
 import java.util.concurrent.CountDownLatch;

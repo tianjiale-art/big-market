@@ -1,27 +1,19 @@
 package cn.tianjiale.domain.strategy.service.raffle;
 
 import cn.tianjiale.domain.strategy.model.entity.*;
-import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
-import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
-import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
-import cn.tianjiale.domain.strategy.service.IRaffleStock;
 import cn.tianjiale.domain.strategy.service.IRaffleStrategy;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
-import cn.tianjiale.domain.strategy.service.rule.chain.ILogicLink;
 import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
+
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
-import cn.tianjiale.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import cn.tianjiale.types.enums.ResponseCode;
 import cn.tianjiale.types.exception.AppException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.annotation.Resource;
-
 @Slf4j
-public abstract class AbstractRaffleStrategy implements IRaffleStrategy, IRaffleStock {
+public abstract class AbstractRaffleStrategy implements IRaffleStrategy{
 
     protected IStrategyRepository repository;
 
@@ -57,11 +49,17 @@ public abstract class AbstractRaffleStrategy implements IRaffleStrategy, IRaffle
         //3,规则树抽奖过滤【】
         DefaultTreeFactory.StrategyAwardVO tree = raffleLogicTree(userId,strategyId,chain.getAwardId());
         log.info("抽奖策略计算-规则树 {} {} {} {}", userId, strategyId, tree.getAwardId(), tree.getAwardRuleValue());
+        //返回抽奖结果
+        return buildRaffleAwardEntity(strategyId,tree.getAwardId(),tree.getAwardRuleValue());
 
-        return RaffleAwardEntity.builder()
-                .awardId(tree.getAwardId())
-                .build();
-
+    }
+    private RaffleAwardEntity buildRaffleAwardEntity(Long strategyId,Integer awardId,String awardConfig){
+      StrategyAwardEntity strategyAwardEntity = repository.queryStrategyAwardEntity(strategyId,awardId) ;
+      return RaffleAwardEntity.builder()
+              .awardId(awardId)
+              .awardConfig(awardConfig)
+              .sort(String.valueOf(strategyAwardEntity.getSort()))
+              .build();
     }
 
     protected abstract DefaultChainFactory.StrategyAwardVO raffleLogicChain(String userId, Long strategyId) throws Exception;

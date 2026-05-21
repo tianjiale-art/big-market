@@ -1,29 +1,22 @@
 package cn.tianjiale.domain.strategy.service.raffle;
 
-import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
-import cn.tianjiale.domain.strategy.model.entity.RaffleFactorEntity;
-import cn.tianjiale.domain.strategy.model.entity.RuleMatterEntity;
-import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+import cn.tianjiale.domain.strategy.model.entity.StrategyAwardEntity;
 import cn.tianjiale.domain.strategy.model.valobj.RuleTreeVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardRuleModelVO;
 import cn.tianjiale.domain.strategy.model.valobj.StrategyAwardStockKeyVO;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
+import cn.tianjiale.domain.strategy.service.IRaffleAward;
+import cn.tianjiale.domain.strategy.service.IRaffleStock;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
-import cn.tianjiale.domain.strategy.service.rule.ILogicFilter;
 import cn.tianjiale.domain.strategy.service.rule.chain.ILogicLink;
 import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
+
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.DefaultTreeFactory;
 import cn.tianjiale.domain.strategy.service.rule.tree.factory.engine.IDecisionTreeEngine;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 
 /**
@@ -31,7 +24,7 @@ import java.util.stream.Collectors;
  */
 @Service
 @Slf4j
-public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
+public class DefaultRaffleStrategy extends AbstractRaffleStrategy implements IRaffleStock, IRaffleAward {
 
 
 
@@ -69,6 +62,11 @@ public class DefaultRaffleStrategy extends AbstractRaffleStrategy{
     @Override
     public void updateStrategyAwardStock(Long strategyId, Integer awardId) {
             repository.updateStrategyAwardStock(strategyId,awardId);
+    }
+
+    @Override
+    public List<StrategyAwardEntity> queryRaffleStrategyAwardList(Long strategyId) {
+        return repository.queryStrategyAwardList(strategyId);
     }
 
     /*protected RaffleActionEntity<RaffleActionEntity.RaffleBeforeEntity> doCheckRaffleBeforeLogic(RaffleFactorEntity raffleFactorEntity, String... logics) {

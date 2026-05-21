@@ -67,7 +67,7 @@ public class DecisionTreeEngine implements IDecisionTreeEngine {
                 return ruleTreeNodeLineVO.getRuleNodeTo();
             }
         }
-        throw new RuntimeException("决策树引擎计算失败，未找到可执行节点");
+        return null;
     }
     private boolean decisionLogic(String code,RuleTreeNodeLineVO ruleTreeNodeLineVO){
         switch (ruleTreeNodeLineVO.getRuleLimitType()){

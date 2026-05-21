@@ -1,12 +1,11 @@
 package cn.tianjiale.domain.strategy.service.rule.chain.impl;
 
-import cn.tianjiale.domain.strategy.model.entity.RaffleActionEntity;
-import cn.tianjiale.domain.strategy.model.valobj.RuleLogicCheckTypeVO;
+
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
 import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
 import cn.tianjiale.domain.strategy.service.rule.chain.AbstractLogicLink;
 import cn.tianjiale.domain.strategy.service.rule.chain.factory.DefaultChainFactory;
-import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
+
 import cn.tianjiale.types.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

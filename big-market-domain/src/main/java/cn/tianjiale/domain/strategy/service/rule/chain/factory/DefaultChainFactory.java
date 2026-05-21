@@ -3,9 +3,9 @@ package cn.tianjiale.domain.strategy.service.rule.chain.factory;
 
 import cn.tianjiale.domain.strategy.model.entity.StrategyEntity;
 import cn.tianjiale.domain.strategy.repository.IStrategyRepository;
-import cn.tianjiale.domain.strategy.service.armory.IStrategyDispatch;
+
 import cn.tianjiale.domain.strategy.service.rule.chain.ILogicLink;
-import cn.tianjiale.domain.strategy.service.rule.factory.DefaultLogicFactory;
+
 import lombok.*;
 import org.springframework.stereotype.Service;
 
