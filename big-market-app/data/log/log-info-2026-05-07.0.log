@@ -1,0 +1,24 @@
+26-05-07.15:51:10.426 [main            ] INFO  StrategyAwardTest      - Starting StrategyAwardTest using Java 17.0.14 on PC-20230922CJSZ with PID 22160 (started by Administrator in C:\Users\Administrator\Desktop\big-market\big-market-app)
+26-05-07.15:51:10.427 [main            ] INFO  StrategyAwardTest      - The following 1 profile is active: "dev"
+26-05-07.15:51:11.158 [main            ] INFO  RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+26-05-07.15:51:11.162 [main            ] INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+26-05-07.15:51:11.189 [main            ] INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 13 ms. Found 0 Redis repository interfaces.
+26-05-07.15:51:11.829 [main            ] INFO  Version                - Redisson 3.23.4
+26-05-07.15:51:12.155 [redisson-netty-2-4] INFO  MasterPubSubConnectionPool - 1 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-05-07.15:51:12.375 [redisson-netty-2-13] INFO  MasterConnectionPool   - 5 connections initialized for 117.72.154.166/117.72.154.166:16379
+26-05-07.15:51:14.427 [main            ] INFO  EndpointLinksResolver  - Exposing 1 endpoint(s) beneath base path '/actuator'
+26-05-07.15:51:14.485 [main            ] INFO  StrategyAwardTest      - Started StrategyAwardTest in 4.439 seconds (JVM running for 5.211)
+26-05-07.15:51:15.360 [main            ] INFO  HikariDataSource       - HikariPool-1 - Starting...
+26-05-07.15:51:15.694 [main            ] INFO  HikariDataSource       - HikariPool-1 - Start completed.
+26-05-07.15:51:16.009 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-05-07.15:51:16.115 [main            ] INFO  StrategyAwardTest      - 测试结果：true
+26-05-07.15:51:16.123 [main            ] INFO  AbstractRaffleStrategy - 执行------------抽奖strategyId:100006,userId:xiaofuge
+26-05-07.15:51:16.150 [main            ] INFO  DefaultLogicChain      - 抽奖责任链——默认抽奖模式userId:xiaofuge,strategyId:100006,ruleModel:rule_default
+26-05-07.15:51:16.200 [main            ] INFO  AbstractRaffleStrategy - 抽奖策略计算-责任链xiaofuge100006101rule_default
+26-05-07.15:51:16.243 [main            ] INFO  DecisionTreeEngine     - 决策树引擎:规则树,treeNode:tree_lock,code:0001
+26-05-07.15:51:16.243 [main            ] INFO  DecisionTreeEngine     - 决策树引擎:规则树,treeNode:tree_lock,code:0001
+26-05-07.15:51:16.244 [main            ] INFO  AbstractRaffleStrategy - 抽奖策略计算-规则树 xiaofuge 100006 101 1:100
+26-05-07.15:51:16.342 [main            ] INFO  StrategyAwardTest      - 请求参数：{"strategyId":100006,"userId":"xiaofuge"}
+26-05-07.15:51:16.345 [main            ] INFO  StrategyAwardTest      - 测试结果：{"awardId":101}
+26-05-07.15:51:16.355 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown initiated...
+26-05-07.15:51:16.366 [SpringApplicationShutdownHook] INFO  HikariDataSource       - HikariPool-1 - Shutdown completed.
