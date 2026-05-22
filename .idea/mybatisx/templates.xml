@@ -68,8 +68,8 @@
             <option name="tableUIInfoList">
               <list>
                 <TableUIInfo>
-                  <option name="className" value="RuleTreeNodeLine" />
-                  <option name="tableName" value="rule_tree_node_line" />
+                  <option name="className" value="RaffleActivityOrder000" />
+                  <option name="tableName" value="raffle_activity_order_000" />
                 </TableUIInfo>
               </list>
             </option>
